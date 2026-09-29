@@ -10,6 +10,9 @@ const space = Space_Grotesk({
 export const metadata: Metadata = {
 	title: "DeratPro",
 	description: "Servicii autorizate de deratizare, dezinsecție si dezinfecție pentru locuințe și spații comerciale. Intervenție rapidă, garanție scrisă.",
+	icons: {
+		icon: "/logo.png",
+	},
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
