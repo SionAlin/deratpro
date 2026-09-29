@@ -1,3 +1,100 @@
+"use client";
+import { useEffect, useRef } from "react";
+import * as THREE from "three";
+
 export default function Hero(){
-    return <div>Hero</div>;
+    const mount = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const el = mount.current!;
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(60, el.clientWidth / el.clientHeight, 0.1, 100);
+        camera.position.z = 6;
+
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setSize(el.clientWidth, el.clientHeight);
+        el.appendChild(renderer.domElement);
+
+        const shieldGeo = new THREE.IcosahedronGeometry(2, 1);
+        const shieldMat = new THREE.MeshBasicMaterial({ color: 0xff7a3d, wireframe: true, transparent: true, opacity: 0.55 });
+        const shield = new THREE.Mesh(shieldGeo, shieldMat);
+        scene.add(shield);
+
+        const N = 350;
+        const pos = new Float32Array(N*3);
+        for(let i = 0; i < pos.length; i++) pos[i] = (Math.random() - 0.5) * 14;
+        const pGeo = new THREE.BufferGeometry();
+        pGeo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+        const pMat = new THREE.PointsMaterial({ color: 0x22d3ee, size: 0.04 });
+        const points = new THREE.Points(pGeo, pMat);
+        scene.add(points);
+
+        const mouse = { x: 0, y: 0 };
+        const onMove = (e: PointerEvent) => {
+            mouse.x = (e.clientX / window.innerWidth - 0.5) * 2;
+            mouse.y = (e.clientY / window.innerHeight - 0.5) * 2;
+        };
+        window.addEventListener("pointermove", onMove);
+
+        const ro = new ResizeObserver(() => {
+            camera.aspect = el.clientWidth / el.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(el.clientWidth, el.clientHeight);
+        });
+        ro.observe(el);
+
+        let raf = 0;
+        const tick = () => {
+            shield.rotation.y += 0.003;
+            shield.rotation.x += 0.001;
+            points.rotation.y -= 0.0006;
+            camera.position.x += (mouse.x * 0.6 - camera.position.x) * 0.03;
+            camera.position.y += (-mouse.y * 0.4 - camera.position.y) * 0.03;
+            camera.lookAt(0, 0, 0);
+            renderer.render(scene, camera);
+            raf = requestAnimationFrame(tick);
+        };
+        tick();
+
+        return () => {
+            cancelAnimationFrame(raf);
+            ro.disconnect();
+            window.removeEventListener("pointermove", onMove);
+            shieldGeo.dispose();
+            shieldMat.dispose();
+            pGeo.dispose();
+            pMat.dispose();
+            renderer.dispose();
+            el.removeChild(renderer.domElement);
+        };
+    }, []);
+
+    return(
+        <section className="relative flex min-h-screen items-center overflow-hidden pt-16">
+            <div ref={mount} className="absolute inset-0 opacity-70 md:left-1/3" aria-hidden />
+            <div className="relative mx-auto w-full max-w-6xl px-5">
+                <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-primary">
+                    Servicii autorizate de deratizare, dezinsecție si dezinfecție
+                </p>
+                <h1 className="max-w-2xl text-4xl font-bold leading-tight sm:text-6xl">
+                    Scapă definitiv de dăunători cu <span className="text-primary">DeratPro</span>
+                </h1>
+                <p className="mt-6 max-w-xl text-zinc-400">
+                    Intervenție rapidă, substanțe avizate, garanție scrisă.
+                </p>
+                <a href="#contact" className="mt-8 inline-block rounded-md bg-primary px-6 py-3 font-semibold text-black transition hover:brightness-110">
+                    Solicită ofertă
+                </a>
+                <dl className="mt-12 grid max-w-md grid-cols-3 gap-4 text-sm">
+                {[["15+", "ani experiență"], ["10.000+", "intervenții"], ["100%", "garanție scrisă"]].map(([v, l]) => (
+                    <div key={l}>
+                    <dt className="text-2xl font-bold text-accent">{v}</dt>
+                    <dd className="text-zinc-500">{l}</dd>
+                    </div>
+                ))}
+                </dl>
+            </div>
+        </section>
+    );
 }
