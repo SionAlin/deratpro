@@ -43,10 +43,6 @@ Give me a design for a web app for a business named 'DeratPro', which helps othe
 5. Contact: features a simple form (name, phone number, message) with input validation.
 I want this site to have a simple design, a dark mode theme, and to be entirely in Romanian.
 
-## Animația din Hero
-
-Sferă wireframe plus particule, generate din cod, cu un mic efect de parallax după mouse. Nu am folosit modele externe.
-
 ## Decizii și compromisuri
 
 - **Stitch ca ghidaj, nu ca sursă de cod.** Am luat din design paleta, fontul și ordinea secțiunilor, dar am scris componentele în React Tailwind și am simplificat layout-ul, fiindcă mockup-ul era prea încărcat.
