@@ -24,9 +24,7 @@ Pentru verificarea build-ului, deschidem http://localhost:3000
 
 ## Structura proiectului
 
-Fiecare secțiune e o componentă separată în `app/components/`:
-`Navbar`, `Hero`, `Services`, `WhyUs`, `HowItWorks`, `Contact`.
-`app/page.tsx` le asamblează în ordinea paginii.
+Fiecare secțiune e o componentă separată în `app/components/`: `Navbar`, `Hero`, `Services`, `WhyUs`, `HowItWorks`, `Contact`. `app/page.tsx` le asamblează în ordinea paginii, cu o mică animație.
 
 ## Design si tool-ul AI folosit
 
@@ -48,3 +46,10 @@ I want this site to have a simple design, a dark mode theme, and to be entirely 
 ## Animația din Hero
 
 Sferă wireframe plus particule, generate din cod, cu un mic efect de parallax după mouse. Nu am folosit modele externe.
+
+## Decizii și compromisuri
+
+- **Stitch ca ghidaj, nu ca sursă de cod.** Am luat din design paleta, fontul și ordinea secțiunilor, dar am scris componentele în React Tailwind și am simplificat layout-ul, fiindcă mockup-ul era prea încărcat.
+- **Animație procedurală, nu model 3D.** Geometria e generată din cod, fără fișiere externe, ca să se încarce rapid și pe mobil.
+- **Formular fără backend.** Conform cerinței, validez în client (nume, telefon, mesaj) și afișez un mesaj de confirmare. Datele nu se stochează sau trimit nicăieri.
+- **Conținut fictiv.** Cifrele (15+ ani, 10.000+ intervenții) și textele sunt inventate pentru demonstrație.
