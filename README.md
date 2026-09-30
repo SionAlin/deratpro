@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DeratPro - Landing page
+Site de prezentare pentru DeratPro, o firmă fictivă de deratizare, dezinsecție și dezinfecție.
 
-## Getting Started
+**Link live:** https://deratpro-seven.vercel.app/
 
-First, run the development server:
+## Cum rulezi local
 
 ```bash
+git clone https://github.com/SionAlin/deratpro.git
+cd deratpro
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
+Pentru verificarea build-ului, deschidem http://localhost:3000
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tehnologii
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Next.js
+- Three.js
+- React
+- TypeScript
+- Tailwind CSS v4
+- Iconițe: lucide-react
+- Deploy: Vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Structura proiectului
 
-## Learn More
+Fiecare secțiune e o componentă separată în `app/components/`:
+`Navbar`, `Hero`, `Services`, `WhyUs`, `HowItWorks`, `Contact`.
+`app/page.tsx` le asamblează în ordinea paginii.
 
-To learn more about Next.js, take a look at the following resources:
+## Design si tool-ul AI folosit
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Tool:** Google Stitch
+**Prompt folosit (pentru logo):**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Give me a logo for a web app for a business named 'DeratPro', which helps other businesses and individuals with rat control, disinsection, and disinfection. Simple dark themed, cartoon logo, no extra text(just DeratPro). I wold like the logo to have an spray toub with an crossed rat an bug on it.
 
-## Deploy on Vercel
+**Prompt folosit (pentru layout):** 
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Give me a design for a web app for a business named 'DeratPro', which helps other businesses and individuals with rat control, disinsection, and disinfection. I want a landing page with 5 vertically scrolling sections:
+1. Hero: features a Three.js animation, business name, a logo with a cute scared cartoon bug, dark mode theme, and a CTA button.
+2. Servicii: displays the 3 services (rat control, disinsection, and disinfection), each with a title, short description, and icon.
+3. De ce DeratPro: highlights 3–4 advantages like fast intervention, approved substances, authorized personnel, and warranty.
+4. Cum funcționează: illustrates a 3-step process (You call -> We evaluate -> We solve the problem).
+5. Contact: features a simple form (name, phone number, message) with input validation.
+I want this site to have a simple design, a dark mode theme, and to be entirely in Romanian.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Animația din Hero
+
+Sferă wireframe plus particule, generate din cod, cu un mic efect de parallax după mouse. Nu am folosit modele externe.
