@@ -16,10 +16,40 @@ export default function Hero(){
         renderer.setSize(el.clientWidth, el.clientHeight);
         el.appendChild(renderer.domElement);
 
+        // poliedru
         const shieldGeo = new THREE.IcosahedronGeometry(2, 1);
         const shieldMat = new THREE.MeshBasicMaterial({ color: 0xff7a3d, wireframe: true, transparent: true, opacity: 0.55 });
         const shield = new THREE.Mesh(shieldGeo, shieldMat);
         scene.add(shield);
+
+        // sfera
+        const coreGeo = new THREE.SphereGeometry(1.5, 50, 50);
+        const coreMat = new THREE.MeshStandardMaterial({
+            color: 0xff7a3d,
+            emissive: 0xff7a3d,
+            emissiveIntensity: 0.6,
+            roughness: 0.4,
+            metalness: 0.1,
+        });
+        const core = new THREE.Mesh(coreGeo, coreMat);
+        scene.add(core);
+
+        const glowGeo = new THREE.SphereGeometry(1.55, 50, 50);
+        const glowMat = new THREE.MeshBasicMaterial({
+        color: 0xff7a3d,
+        transparent: true,
+        opacity: 0.15,
+        side: THREE.BackSide,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false,
+        });
+        const glow = new THREE.Mesh(glowGeo, glowMat);
+        scene.add(glow);
+
+        scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+        const light = new THREE.PointLight(0xffffff, 40, 20);
+        light.position.set(4, 3, 5);
+        scene.add(light);
 
         const N = 350;
         const pos = new Float32Array(N*3);
@@ -65,7 +95,11 @@ export default function Hero(){
             shieldMat.dispose();
             pGeo.dispose();
             pMat.dispose();
+            coreGeo.dispose();
+            coreMat.dispose();
             renderer.dispose();
+            glowGeo.dispose();
+            glowMat.dispose();
             el.removeChild(renderer.domElement);
         };
     }, []);
