@@ -29,6 +29,7 @@ Fiecare secțiune e o componentă separată în `app/components/`: `Navbar`, `He
 ## Design si tool-ul AI folosit
 
 **Tool:** Google Gemini (logo), Google Stitch (layout)
+
 **Prompt folosit (pentru logo):**
 
 Give me a logo for a web app for a business named 'DeratPro', which helps other businesses and individuals with rat control, disinsection, and disinfection. Simple dark themed, cartoon logo, no extra text(just DeratPro). I wold like the logo to have an spray toub with an crossed rat an bug on it.
