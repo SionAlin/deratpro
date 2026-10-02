@@ -20,7 +20,7 @@ export default function Services() {
           const Icon = icons[i];
           return (
             <Reveal key={s.title} delay={i * 120}>
-                <article className="group rounded-xl border border-line bg-surface p-6 transition-all duration-300 hover:-translate-y-2 hover:border-primary/60 hover:shadow-lg">
+                <article className="h-full group rounded-xl border border-line bg-surface p-6 transition-all duration-300 hover:-translate-y-2 hover:border-primary/60 hover:shadow-lg">
                     <Icon className="text-primary transition-transform duration-300 group-hover:scale-110" size={28} />
                     <h3 className="mt-4 text-xl font-semibold">{s.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-muted">{s.text}</p>
