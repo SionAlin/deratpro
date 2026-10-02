@@ -1,6 +1,7 @@
 "use client";
+
 import { useState } from "react";
-import { Menu, X, ShieldCheck } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import ThemeToggle from "./ThemeToggle";
 import LangToggle from "./LangToggle";
@@ -11,7 +12,7 @@ const links = [
     { href: "#de-ce", key: "why" },
     { href: "#cum-functioneaza", key: "how" },
     { href: "#contact", key: "contact" },
-];
+] as const;
 
 export default function Navbar(){
     const [open, setOpen] = useState(false);

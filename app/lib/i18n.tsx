@@ -2,7 +2,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
 const ro = {
-    nav: { services: "Servicii", why: "De ce DeratPro", how: "Cum funcționează", contact: "Contact" },
+    nav: { services: "Servicii", why: "De ce DeratPro", how: "Cum funcționează", contact: "Contact", menu: "Meniu", },
     hero: {
         badge: "Servicii autorizate DDD",
         title: "Scapă definitiv de dăunători cu",
@@ -57,7 +57,7 @@ const ro = {
 };
 
 const en: typeof ro = {
-    nav: { services: "Services", why: "Why DeratPro", how: "How it works", contact: "Contact" },
+    nav: { services: "Services", why: "Why DeratPro", how: "How it works", contact: "Contact", menu: "Menu", },
     hero: {
         badge: "Licensed pest control",
         title: "Get rid of pests for good with",

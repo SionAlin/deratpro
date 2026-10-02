@@ -11,7 +11,7 @@ export default function Contact(){
     const [values, setValues] = useState({ name: "", phone: "", message: "" });
     const [errors, setErrors] = useState<Errors>({});
     const [sent, setSent] = useState(false);
-    const [submitError, setSubmitError] = useState("");
+    const [submitError, setSubmitError] = useState(false);
 
     const validate = (): Errors => {
         const e: Errors = {};
