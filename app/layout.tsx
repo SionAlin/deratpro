@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 	title: "DeratPro",
 	description: "Servicii autorizate de deratizare, dezinsecție si dezinfecție pentru locuințe și spații comerciale. Intervenție rapidă, garanție scrisă.",
 	icons: {
-		icon: "/logo.png",
+		icon: "/DeratproLogo.png",
 	},
 };
 
@@ -20,7 +20,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     	<html
     		lang="ro"
     		className={space.variable}
+			suppressHydrationWarning
     	>
+		<head>
+			<script
+			dangerouslySetInnerHTML={{
+				__html: `try{var t=localStorage.getItem("theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.dataset.theme=t}catch(e){}`,
+			}}
+			/>
+		</head>
     	<body>{children}</body>
     	</html>
 	);
