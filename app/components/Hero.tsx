@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useRef } from "react";
 import { useLang } from "../lib/i18n";
 import * as THREE from "three";

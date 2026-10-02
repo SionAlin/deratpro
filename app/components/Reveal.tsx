@@ -1,9 +1,10 @@
 "use client";
+
 import { useEffect, useRef, useState } from "react";
 
 export default function Reveal({
     children,
-    delay = 1,
+    delay = 0,
 }: {
     children: React.ReactNode;
     delay?: number;
@@ -13,30 +14,32 @@ export default function Reveal({
 
     useEffect(() => {
         const el = ref.current!;
-        const io = new IntersectionObserver(
+
+        if(!el) return;
+
+        const observer = new IntersectionObserver(
             ([entry]) => {
-                if (entry.isIntersecting) {
-                    setVisible(true);
-                    io.disconnect(); // animația rulează o singură dată
-                }
+                setVisible(entry.isIntersecting);
             },
-            { threshold: 0.15 } // când 15% din element e vizibil
+            { 
+                threshold: 0.15,
+            }
         );
-        io.observe(el);
-        return () => io.disconnect();
+        observer.observe(el);
+        return () => observer.disconnect();
     }, []);
 
     return (
         <div
-        ref={ref}
-        style={{ transitionDelay: `${delay}ms` }}
-        className={`transition-all duration-700 ease-out motion-reduce:transition-none ${
-            visible
-            ? "translate-y-0 opacity-100"
-            : "translate-y-10 opacity-0 motion-reduce:translate-y-0 motion-reduce:opacity-100"
-        }`}
+            ref={ref}
+            style={{ transitionDelay: `${delay}ms` }}
+            className={`transform-gpu transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
+                visible
+                ? "translate-y-0 scale-100 opacity-100"
+                : "translate-y-8 scale-[0.97] opacity-0"
+            }`}
         >
-        {children}
+            {children}
         </div>
     );
 }

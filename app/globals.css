@@ -31,8 +31,10 @@
 	--font-sans: var(--font-space), system-ui, sans-serif;
 }
 
+html{ scroll-behavior: smooth; }
+
 @media (prefers-reduced-motion: reduce) {
-	html{ scroll-behavior: smooth; }
+	html{ scroll-behavior: auto; }
 }
 
 body {
