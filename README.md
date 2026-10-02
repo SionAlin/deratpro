@@ -1,7 +1,7 @@
 # DeratPro - Landing page
 Site de prezentare pentru DeratPro, o firmă fictivă de deratizare, dezinsecție și dezinfecție.
 
-**Link live:** https://deratpro-seven.vercel.app/
+**Link live:** https://deratpro-git-feature-contact-api-alin11-4f87.vercel.app/
 
 ## Cum rulezi local
 
@@ -50,3 +50,7 @@ I want this site to have a simple design, a dark mode theme, and to be entirely 
 - **Animație procedurală, nu model 3D.** Geometria e generată din cod, fără fișiere externe, ca să se încarce rapid și pe mobil.
 - **Formular fără backend.** Conform cerinței, validez în client (nume, telefon, mesaj) și afișez un mesaj de confirmare. Datele nu se stochează sau trimit nicăieri.
 - **Conținut fictiv.** Cifrele (15+ ani, 10.000+ intervenții) și textele sunt inventate pentru demonstrație.
+
+## Funcționalitate adăugată
+
+Endpoint API (`app/api/contact/route.ts`) care primește datele formularului de contact, le validează pe server și le înregistrează în loguri.

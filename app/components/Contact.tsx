@@ -9,6 +9,7 @@ export default function Contact(){
     const [values, setValues] = useState({ name: "", phone: "", message: "" });
     const [errors, setErrors] = useState<Errors>({});
     const [sent, setSent] = useState(false);
+    const [submitError, setSubmitError] = useState("");
 
     const validate = (): Errors => {
         const e: Errors = {};
@@ -18,13 +19,24 @@ export default function Contact(){
         return e;
     };
 
-    const onSubmit = (ev: React.FormEvent) => {
+    const onSubmit = async (ev: React.FormEvent) => {
         ev.preventDefault();
         const e = validate();
         setErrors(e);
-        if(Object.keys(e).length === 0){
+        if(Object.keys(e).length > 0) return;
+
+        try {
+            const res = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(values),
+            });
+            if(!res.ok) throw new Error();
+            setSubmitError("");
             setSent(true);
             setValues({ name: "", phone: "", message: "" });
+        } catch {
+            setSubmitError("Nu s-a putut trimite mesajul!");
         }
     };
 
