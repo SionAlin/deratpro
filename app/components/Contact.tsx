@@ -66,7 +66,8 @@ export default function Contact(){
                         {errors.message && <span className="text-sm text-red-400">{errors.message}</span>}
                     </label>
                     <button className="rounded-md bg-primary px-6 py-3 font-semibold text-black hover:brightness-110">{t.contact.submit}</button>
-                    {sent && <p role="status" className="text-accent">{t.contact.submitError}</p>}
+                    {sent && <p role="status" className="text-accent">{t.contact.success}</p>}
+                    {submitError && <p role="alert" className="text-red-500">{t.contact.submitError}</p>}
                 </form>
             </div>
         </section>
