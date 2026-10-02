@@ -1,8 +1,10 @@
 "use client";
 import { useEffect, useRef } from "react";
+import { useLang } from "../lib/i18n";
 import * as THREE from "three";
 
 export default function Hero(){
+    const { t } = useLang();
     const mount = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -109,24 +111,24 @@ export default function Hero(){
             <div ref={mount} className="absolute inset-0 opacity-70 md:left-1/3" aria-hidden />
             <div className="relative mx-auto w-full max-w-6xl px-5">
                 <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-primary">
-                    Servicii autorizate de deratizare, dezinsecție si dezinfecție
+                    {t.hero.badge}
                 </p>
                 <h1 className="max-w-2xl text-4xl font-bold leading-tight sm:text-6xl">
-                    Scapă definitiv de dăunători cu <span className="text-primary">DeratPro</span>
+                    {t.hero.title} <span className="text-primary">DeratPro</span>
                 </h1>
                 <p className="mt-6 max-w-xl text-zinc-400">
-                    Intervenție rapidă, substanțe avizate, garanție scrisă.
+                    {t.hero.text}
                 </p>
                 <a href="#contact" className="mt-8 inline-block rounded-md bg-primary px-6 py-3 font-semibold text-black transition hover:brightness-110">
-                    Solicită ofertă
+                    {t.hero.cta}
                 </a>
                 <dl className="mt-12 grid max-w-md grid-cols-3 gap-4 text-sm">
-                {[["15+", "ani experiență"], ["10.000+", "intervenții"], ["100%", "garanție scrisă"]].map(([v, l]) => (
-                    <div key={l}>
-                    <dt className="text-2xl font-bold text-accent">{v}</dt>
-                    <dd className="text-zinc-500">{l}</dd>
-                    </div>
-                ))}
+                    {t.hero.stats.map((s) => (
+                        <div key={s.label}>
+                        <dt className="text-2xl font-bold text-accent">{s.value}</dt>
+                        <dd className="text-zinc-500">{s.label}</dd>
+                        </div>
+                    ))}
                 </dl>
             </div>
         </section>

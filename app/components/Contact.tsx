@@ -1,11 +1,13 @@
 "use client"
 import { useState } from "react";
+import { useLang } from "../lib/i18n";
 
 type Errors = { name?: string; phone?: string; message?: string };
 
 const phoneRe = /^(\+40|0)[237]\d{8}$/;
 
 export default function Contact(){
+    const { t } = useLang();
     const [values, setValues] = useState({ name: "", phone: "", message: "" });
     const [errors, setErrors] = useState<Errors>({});
     const [sent, setSent] = useState(false);
@@ -13,9 +15,9 @@ export default function Contact(){
 
     const validate = (): Errors => {
         const e: Errors = {};
-        if(values.name.trim().length < 2) e.name = "Introdu numele tău.";
-        if(!phoneRe.test(values.phone.replace(/[\s.-]/g, ""))) e.phone = "Introdu un număr de telefon valid.";
-        if(values.message.trim().length < 10) e.message = "Mesajul trebuie să aibă cel puțin 10 caractere."
+        if(values.name.trim().length < 2) e.name = t.contact.errors.name;
+        if(!phoneRe.test(values.phone.replace(/[\s.-]/g, ""))) e.phone = t.contact.errors.phone;
+        if(values.message.trim().length < 10) e.message = t.contact.errors.message;
         return e;
     };
 
@@ -32,11 +34,11 @@ export default function Contact(){
                 body: JSON.stringify(values),
             });
             if(!res.ok) throw new Error();
-            setSubmitError("");
+            setSubmitError(false);
             setSent(true);
             setValues({ name: "", phone: "", message: "" });
         } catch {
-            setSubmitError("Nu s-a putut trimite mesajul!");
+            setSubmitError(true);
         }
     };
 
@@ -49,22 +51,22 @@ export default function Contact(){
     return (
         <section id="contact" className="border-t border-line bg-surface/40">
             <div className="mx-auto max-w-xl px-5 py-24">
-                <h2 className="text-3xl font-bold sm:text-4xl">Cere o ofertă</h2>
+                <h2 className="text-3xl font-bold sm:text-4xl">{t.contact.title}</h2>
                 <form onSubmit={onSubmit} noValidate className="mt-8 space-y-5">
-                    <label className="block text-sm">Nume
+                    <label className="block text-sm">{t.contact.name}
                         <input className={field} value={values.name} onChange={set("name")} aria-invalid={! !errors.name} />
                         {errors.name && <span className="text-sm text-red-400">{errors.name}</span>}
                     </label>
-                    <label className="block text-sm">Telefon
+                    <label className="block text-sm">{t.contact.phone}
                         <input className={field} value={values.phone} onChange={set("phone")} aria-invalid={! !errors.phone} />
                         {errors.phone && <span className="text-sm text-red-400">{errors.phone}</span>}
                     </label>
-                    <label className="block text-sm">Mesaj
+                    <label className="block text-sm">{t.contact.message}
                         <textarea className={field} rows={4} value={values.message} onChange={set("message")} aria-invalid={! !errors.message} />
                         {errors.message && <span className="text-sm text-red-400">{errors.message}</span>}
                     </label>
-                    <button className="rounded-md bg-primary px-6 py-3 font-semibold text-black hover:brightness-110">Trimite</button>
-                    {sent && <p role="status" className="text-accent"> Mulțumim! Te vom contacta în curând.</p>}
+                    <button className="rounded-md bg-primary px-6 py-3 font-semibold text-black hover:brightness-110">{t.contact.submit}</button>
+                    {sent && <p role="status" className="text-accent">{t.contact.submitError}</p>}
                 </form>
             </div>
         </section>

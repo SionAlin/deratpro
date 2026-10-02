@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
+import { LanguageProvider } from "./lib/i18n";
 import "./globals.css";
 
 const space = Space_Grotesk({
@@ -29,7 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 			}}
 			/>
 		</head>
-    	<body>{children}</body>
+    	<body><LanguageProvider>{children}</LanguageProvider></body>
     	</html>
 	);
 }

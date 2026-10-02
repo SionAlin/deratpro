@@ -1,34 +1,34 @@
 @import "tailwindcss";
 
 :root {
---bg: #f7f9fb;
---surface: #ffffff;
---line: #dde3ea;
---fg: #0f172a;
---muted: #52606d;
---primary: #e8590c;
---accent: #0891b2;
+	--bg: #f7f9fb;
+	--surface: #ffffff;
+	--line: #dde3ea;
+	--fg: #0f172a;
+	--muted: #52606d;
+	--primary: #e8590c;
+	--accent: #0891b2;
 }
 
 :root[data-theme="dark"] {
---bg: #0b0f14;
---surface: #131a22;
---line: #232d38;
---fg: #e6edf3;
---muted: #9aa7b4;
---primary: #ff7a3d;
---accent: #22d3ee;
+	--bg: #0b0f14;
+	--surface: #131a22;
+	--line: #232d38;
+	--fg: #e6edf3;
+	--muted: #9aa7b4;
+	--primary: #ff7a3d;
+	--accent: #22d3ee;
 }
 
 @theme inline {
---color-bg: var(--bg);
---color-surface: var(--surface);
---color-line: var(--line);
---color-fg: var(--fg);
---color-muted: var(--muted);
---color-primary: var(--primary);
---color-accent: var(--accent);
---font-sans: var(--font-space), system-ui, sans-serif;
+	--color-bg: var(--bg);
+	--color-surface: var(--surface);
+	--color-line: var(--line);
+	--color-fg: var(--fg);
+	--color-muted: var(--muted);
+	--color-primary: var(--primary);
+	--color-accent: var(--accent);
+	--font-sans: var(--font-space), system-ui, sans-serif;
 }
 
 @media (prefers-reduced-motion: reduce) {
