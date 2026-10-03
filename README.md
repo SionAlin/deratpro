@@ -148,13 +148,7 @@ The UI concept was generated with **Google Stitch**, and the logo was created wi
  
 **Prompt used for the layout (Google Stitch):**
  
-> Give me a design for a web app for a business named 'DeratPro', which helps other businesses and individuals with rat control, disinsection, and disinfection. I want a landing page with 5 vertically scrolling sections:
-1. Hero: features a Three.js animation, business name, a logo with a cute scared cartoon bug, dark mode theme, and a CTA button.
-2. Servicii: displays the 3 services (rat control, disinsection, and disinfection), each with a title, short description, and icon.
-3. De ce DeratPro: highlights 3–4 advantages like fast intervention, approved substances, authorized personnel, and warranty.
-4. Cum funcționează: illustrates a 3-step process (You call -> We evaluate -> We solve the problem).
-5. Contact: features a simple form (name, phone number, message) with input validation.
-I want this site to have a simple design, a dark mode theme, and to be entirely in Romanian.
+> Give me a design for a web app for a business named 'DeratPro', which helps other businesses and individuals with rat control, disinsection, and disinfection. I want a landing page with 5 vertically scrolling sections:<br>1. Hero: features a Three.js animation, business name, a logo with a cute scared cartoon bug, dark mode theme, and a CTA button.<br>2. Servicii: displays the 3 services (rat control, disinsection, and disinfection), each with a title, short description, and icon.<br>3. De ce DeratPro: highlights 3–4 advantages like fast intervention, approved substances, authorized personnel, and warranty.<br>4. Cum funcționează: illustrates a 3-step process (You call -> We evaluate -> We solve the problem).<br>5. Contact: features a simple form (name, phone number, message) with input validation.<br>I want this site to have a simple design, a dark mode theme, and to be entirely in Romanian.
  
 **Prompt used for the logo (Google Gemini):**
 
