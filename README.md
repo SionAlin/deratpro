@@ -158,5 +158,4 @@ The UI concept was generated with **Google Stitch**, and the logo was created wi
  
 - Next.js 16 (App Router), React, TypeScript, Tailwind CSS v4, Three.js, lucide-react
 - PostgreSQL on Neon, deployed on Vercel
-- Feature branches and conventional commits (`feat:`, `fix:`, `docs:`)
 - AI assistants were used for design inspiration (Google Stitch) and as a coding helper; the code was reviewed and adapted by hand
